@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ]
+        });">
+      </script>
+  </head>
+  <body>
+    <!-- red: #F24822; blue: #3DADFF  -->
+    <div class="task_block">
+      <header>Задача 1</header>
+
+
+        $\gdef\cone#1{\textcolor{F24822}{#1}}$
+        $\gdef\ctwo#1{\textcolor{3DADFF}{#1}}$
+        $\gdef\cthree#1{\textcolor{66D575}{#1}}$
+
+      <p class="under">
+        Докажите, что списочное хроматическое число цикла на чётном числе вершин равно двум. 
+      </p>
+
+      <p>
+        Обозначим цикл на чётном числе вершин $C_{2k}$ ,
+        нужно доказать что
+        $$ \Chi_l(C_{2k}) = 2,
+        \forall \space k>1$$
+      </p>
+
+      <p class="under">
+        Доказательство:
+      </p>
+
+      <p class="mb_2">
+        Пусть V &mdash; множество вершин графа $C_{2k}$. <br />
+        Через $L_{v_i}$ будем обозначать список цветов допустимых для вершины $v_i$. <br />
+        Очевидно, что если $|L_{v_i}| = 1, \forall v_i \in V$, то не существует правильной раскраски, 
+        например для случая когда все списки цветов состоят из одного и того же цвета.<br />
+        Покажем, что два цвета, $|L_{v_i}| = 2$, будет достаточно
+        <ul class="ul_num mb_3">
+            <li>
+                Предположим, что списки доступных для цветов вершин одинаковы для каждой вершины. <br />
+                $L_{v_1} = L_{v_2} = ... = L_{v_{2k}}, \forall v \in V $.<br />
+                Обозначим доступные цвета $\cone{1}$ и $\ctwo{2}$.<br />
+                Тогда, мы можем зафиксировать произвольную вершину $v_1$ и выбрать для нее произвольный цвет, допустим $\cone1$.<br />
+                Для соседней вершины $v_2$(любой из двух) мы можем выбрать цвет $\ctwo{2}$ и так далее, чередуя цвета для всех вершин мы получим раскараску графа.<br />
+                Т.к. число вершин четно, цвет последней раскрашиваемой нами вершины $v_{2k}$ не будет совпадать с цветом первой вершины $v_1$ и раскараска будет правильной.
+
+                <img src="../img/1.png" alt="">
+            </li>
+            <li>
+                Теперь рассмотрим случай, когда количество списки вершин отличаются хотя бы для двух каких-то вершин, т.е общее число цветов, используемых в списках $> 2$.<br />
+                Тогда существует такая пара соседних вершин, обозначим их $v_1$ и $v_{2k}$, что в $L_{v_1}$ есть такой цвет,
+                которого нет в $L_{v_k}$(на самом деле из этого следует, что и в $L_{v_{2k}}$ есть цвет, которого нет в $L_{v_1}$).<br />
+                Действительно, если предположить что таких соседних вершин не существует, то мы можем, пользуясь транзитивностью, показать что списки всех вершин совпадают 
+                и мы оказываемся в уже рассмотренном выше случае.<br />
+                Обозначим отличающийся цвет из $L_{v_1} \> \cthree{3}$. Начнем раскраску с вершины $v_1$ и покрасим ее в цвет $\cthree{3}$.
+                Продолжим раскраску в сторону, противоположную $2_{2k}$. Перейдем к $v_2$ &mdash; вершине соседней к $v_1$, но не равной $v_{2k}$.
+                Из двух цветов лежащих в $L_{v_2}$, мы сможем выбрать тот, что не равен цвету $\cthree{3}$. Продолжая раскраску по этому принципу, т.е каждый раз
+                выбирая цвет, не равный цвету соседней вершины, мы дойдем до $v_{2k}$.<br />
+                Так мы получим правильную раскраску для цепи $v_1 ...v_{2k}$. Но наличие ребра $(v_k, v_1)$ не испортит "правильность" раскраски, т.к.
+                в $L_{2k}$ нет цвета $\cthree{3}$, который мы выбрали для $v_1$. Значит, цвета $v_k$ и $v_1$ не могут совпадать и раскраска будет правильной 
+                и для $C_{2k}$.
+                <img src="../img/2.png" alt="">
+            </li>
+        </ul>
+      </p>
+
+    </div>
+
+
+  </body>
+  <style>
+
+    html {
+      font-size: 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    body {
+      /* max-width: 40rem; */
+      width: 100%;
+      padding: 2rem;
+      /* border: 1px solid #e2e2e2; */
+      line-height: 1.5rem;
+    }
+
+    header {
+        font-weight: 600;
+        font-size: 1.5rem;
+        text-decoration: underline;
+    }
+
+
+    img {
+      margin: 15px;
+      display: block;
+      margin-bottom: 1rem;
+      border: 1px solid #e2e2e2;
+      padding: 15px;
+    }
+
+    .under {
+      text-decoration: underline;
+    }
+
+    .ul_none {
+      list-style: none;
+    }
+
+    .ul_num {
+        list-style: decimal;
+    }
+
+    .center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .task_block {
+      margin-bottom: 4rem;
+    }
+
+    .text {
+      font-size: 1.1rem;
+    }
+
+    .mb_2 {
+      margin-bottom: 2rem;
+    }
+  </style>
+</html>
