@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ]
+        });">
+      </script>
+  </head>
+  <body>
+    <!-- red: #F24822; blue: #3DADFF  -->
+    <div class="task_block">
+      <header>Задача 2</header>
+
+      <p>
+        Граф называется критическим k-хроматическим, если хроматическое число графа равно $k$, 
+        но хроматическое число любого его меньшего подграфа уже не более $k−1$. 
+        Докажите, что для любого критического k-хроматического графа $G$
+        выполнено неравенство $\\∥G∥≥|G|⋅(k−1)/2$
+      </p>
+
+      <hr>
+
+      <p>
+        Покажем, что любая вершина $v$ данного графа $G,$ имеет степень не меньше $k-1$. <br />
+        Предположим, что $\exist \> v \in V(G): deg(v) < k - 1$. Рассмотрим подграф $G' = G \> \backslash \> \{v\}.$
+        Т.к. граф $G$ <i>критически</i> k-хроматический, то $\chi(G') = k - 1.$ Значит, существует правильная раскраска $G'$ из $k-1$ цветов. 
+        Применим эту раскраску к
+        графу $G$. Теперь, т.к. у $v$ не более, чем $k-2$ соседей, то среди $k-1$ цветов данной раскраски найдется такой цвет для $v$, что он не будет 
+        совпадать ни с одним из цветов соседних вершин. Покрасив $v$ в этот цвет, мы получим правильную раскраску $G$ из $k-1$ цветов. Это противоречит 
+        условию $\chi(G) = k$. А значит такой вершины не существует и $\forall \> v \in V(G), \> deg(v) \ge k - 1$. <br />
+        Применяя лемму о рукопожатиях, получаем требуемое неравенство:
+        $$
+            \frac{|G|(k-1)}{2} \le \frac{\sum_{v \in V} deg(v)}{2} = ||G||
+        $$
+      </p>
+    </div>
+
+
+  </body>
+  <style>
+
+    html {
+      font-size: 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    body {
+      width: 100%;
+      padding: 2rem;
+      line-height: 1.5rem;
+    }
+
+    header {
+        font-weight: 600;
+        font-size: 1.5rem;
+        text-decoration: underline;
+    }
+
+
+    img {
+      margin: 15px;
+      display: block;
+      margin-bottom: 1rem;
+      border: 1px solid #e2e2e2;
+      padding: 15px;
+    }
+
+    .under {
+      text-decoration: underline;
+    }
+
+    .ul_none {
+      list-style: none;
+    }
+
+    .ul_num {
+        list-style: decimal;
+    }
+
+    .center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .task_block {
+      margin-bottom: 4rem;
+    }
+
+    .text {
+      font-size: 1.1rem;
+    }
+
+    .mb_2 {
+      margin-bottom: 2rem;
+    }
+  </style>
+</html>
